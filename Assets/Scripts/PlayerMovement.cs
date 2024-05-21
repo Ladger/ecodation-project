@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSideSpeed = 5f;
-    [SerializeField] private Transform[] lanes;
+    [SerializeField] private Transform ground;
 
+    List<Transform> lanes = new List<Transform>();
     private int laneIndex = 1;
     private bool isMoving;
     private Vector3 targetPosition;
@@ -15,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Transform t in ground)
+        {
+            lanes.Add(t);
+        }
+
         isMoving = false;
         targetPosition = transform.position;
     }
@@ -48,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveSide(int direction)
     {
-        int newLaneIndex = Mathf.Clamp(laneIndex + direction, 0, lanes.Length - 1);
+        int newLaneIndex = Mathf.Clamp(laneIndex + direction, 0, lanes.Count - 1);
         if (newLaneIndex != laneIndex)
         {
             laneIndex = newLaneIndex;
@@ -57,4 +63,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public int getLaneIndex() { return laneIndex; }
 }
