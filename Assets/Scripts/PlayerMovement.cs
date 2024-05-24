@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSideSpeed = 5f;
     [SerializeField] private Transform ground;
+    [SerializeField] GameObject gameOverScreen;
 
     List<Transform> lanes = new List<Transform>();
     private int laneIndex = 1;
@@ -64,4 +65,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public int getLaneIndex() { return laneIndex; }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        {
+            if (collision.transform.CompareTag("Obstacle"))
+            {
+                gameOverScreen.SetActive(true);
+            }
+        }
+    }
 }

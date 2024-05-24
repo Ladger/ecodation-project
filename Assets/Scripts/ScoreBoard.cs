@@ -29,4 +29,9 @@ public class ScoreBoard : MonoBehaviour
     {
         scoreText.text = in_score.ToString();
     }
+
+    public int getScore()
+    {
+        return (int)score;
+    }
 }

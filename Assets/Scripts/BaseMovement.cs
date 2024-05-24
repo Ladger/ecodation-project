@@ -16,7 +16,7 @@ public class BaseMovement : MonoBehaviour
     {
         float moveAmount = movementSpeed * Time.deltaTime;
 
-        transform.Translate(0, 0, -moveAmount);
+        transform.Translate(0, 0, -moveAmount, Space.World);
     }
 
     public float getMovementSpeed() { return movementSpeed; }
