@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 6673532370924843236}
   - component: {fileID: 6673532370924843237}
   - component: {fileID: 6673532370924843235}
+  - component: {fileID: 1399121089}
   m_Layer: 0
   m_Name: PlayerCar
   m_TagString: Untagged
@@ -388,6 +389,28 @@ MonoBehaviour:
   playerSideSpeed: 40
   ground: {fileID: 0}
   gameOverScreen: {fileID: 0}
+  animator: {fileID: 1399121089}
+--- !u!95 &1399121089
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673532371464063539}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67e4bca0a921f66488ed4826df10b70b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6673532371464065055
 GameObject:
   m_ObjectHideFlags: 0

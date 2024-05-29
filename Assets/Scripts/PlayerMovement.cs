@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float playerSideSpeed = 5f;
     [SerializeField] private Transform ground;
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] Animator animator;
 
     List<Transform> lanes = new List<Transform>();
     private int laneIndex = 1;
@@ -49,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 transform.position = targetPosition;
                 isMoving = false;
+
+                animator.SetInteger("MoveDirection", 0);
+                animator.SetBool("IsMoving", isMoving);
             }
         }
     }
@@ -58,9 +62,13 @@ public class PlayerMovement : MonoBehaviour
         int newLaneIndex = Mathf.Clamp(laneIndex + direction, 0, lanes.Count - 1);
         if (newLaneIndex != laneIndex)
         {
+            
             laneIndex = newLaneIndex;
             targetPosition.x = lanes[laneIndex].position.x;
             isMoving = true;
+
+            animator.SetInteger("MoveDirection", direction);
+            animator.SetBool("IsMoving", isMoving);
         }
     }
 
@@ -72,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (collision.transform.CompareTag("Obstacle"))
             {
+                FindObjectOfType<CarSpawner>().gameObject.SetActive(false);
                 gameOverScreen.SetActive(true);
             }
         }

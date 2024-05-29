@@ -7,20 +7,15 @@ using UnityEngine.UI;
 public class ScoreBoard : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] Transform ground;
+    [SerializeField] float scoreFactor;
 
-    float startZ;
     float score;
 
-    private void Start()
-    {
-        startZ = ground.position.z;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        score = startZ - ground.position.z;
+        score += scoreFactor * Time.deltaTime;
 
         UpdateScoreboard((int)score);
     }
@@ -34,4 +29,6 @@ public class ScoreBoard : MonoBehaviour
     {
         return (int)score;
     }
+
+    public void resetScore() { score = 0; }
 }
